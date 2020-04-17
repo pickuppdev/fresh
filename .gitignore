@@ -4,6 +4,7 @@
 tmp
 /fresh
 /runner.conf.dev
+/vendor
 
 *.o
 *.a
