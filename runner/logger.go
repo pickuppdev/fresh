@@ -10,7 +10,8 @@ import (
 
 type logFunc func(string, ...interface{})
 
-var logger = logPkg.New(colorable.NewColorableStdout(), "", 0)
+var stdoutLogger = logPkg.New(colorable.NewColorableStdout(), "", 0)
+var stderrLogger = logPkg.New(colorable.NewColorableStderr(), "", 0)
 
 func newLogFunc(prefix string) func(string, ...interface{}) {
 	color, clear := "", ""
@@ -24,12 +25,12 @@ func newLogFunc(prefix string) func(string, ...interface{}) {
 		now := time.Now()
 		timeString := fmt.Sprintf("%d:%d:%02d", now.Hour(), now.Minute(), now.Second())
 		format = fmt.Sprintf("%s%s %s |%s %s", color, timeString, prefix, clear, format)
-		logger.Printf(format, v...)
+		stdoutLogger.Printf(format, v...)
 	}
 }
 
 func fatal(err error) {
-	logger.Fatal(err)
+	stderrLogger.Fatal(err)
 }
 
 type appLogWriter struct{}
