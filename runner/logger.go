@@ -10,7 +10,7 @@ import (
 
 type logFunc func(string, ...interface{})
 
-var logger = logPkg.New(colorable.NewColorableStderr(), "", 0)
+var logger = logPkg.New(colorable.NewColorableStdout(), "", 0)
 
 func newLogFunc(prefix string) func(string, ...interface{}) {
 	color, clear := "", ""
