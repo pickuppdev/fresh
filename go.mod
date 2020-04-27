@@ -1,4 +1,4 @@
-module github.com/pilu/fresh
+module github.com/pickuppdev/fresh
 
 go 1.13
 
